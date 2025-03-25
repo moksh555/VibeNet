@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +43,7 @@ public class UserController {
 
 	
 	@PutMapping("/api/users")
-	public User updateUser(@RequestHeader("Authorization") String jwt) throws Exception {
+	public User updateUser(@RequestHeader("Authorization") String jwt, @RequestBody User user) throws Exception {
 		User reqUser = userService.findUserByJwt(jwt);
 		User updatedUser = userService.updateUser(reqUser, reqUser.getId());
 		return updatedUser;

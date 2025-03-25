@@ -4,10 +4,6 @@ public class LoginRequest {
 		
 	private String email;
 	private String password;
-	
-	public LoginRequest() {
-		
-	}
 	public LoginRequest(String email, String password) {
 		super();
 		this.email = email;
@@ -25,6 +21,7 @@ public class LoginRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	
 	
 }

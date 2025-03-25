@@ -25,9 +25,13 @@ public class CustomerUserDetailService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findByEmail(username);
 		
+
 		if (user == null) {
 			throw new UsernameNotFoundException("User not found with email " + username);
 		}
+		
+		System.out.println("Email: " + user.getEmail());
+		System.out.println("Password: " + user.getPassword());
 		
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		

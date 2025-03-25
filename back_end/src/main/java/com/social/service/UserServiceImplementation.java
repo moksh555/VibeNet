@@ -105,7 +105,6 @@ public class UserServiceImplementation implements UserService{
 		String email = JwtProvider.getEmailFromJwtToken(jwt);
 		
 		User user = userRepository.findByEmail(email);
-		user.setPassword(null);
 		return user;
 	}
 	

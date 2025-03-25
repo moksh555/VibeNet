@@ -29,9 +29,9 @@ public class PostController {
 	@Autowired
 	UserService userService;
 	
-	@PostMapping("/api/posts ")
+	@PostMapping("/api/posts")
 	public ResponseEntity<Post> createPost(@RequestBody Post post, @RequestHeader("Authorization") String jwt) throws Exception {
-		User user = userService.findUserByEmail(jwt);
+		User user = userService.findUserByJwt(jwt);
 		Post createdPost = postService.createNewPost(post, user.getId());
 		return new ResponseEntity<>(createdPost, HttpStatus.ACCEPTED);
 	}
