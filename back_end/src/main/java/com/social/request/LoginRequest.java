@@ -1,4 +1,4 @@
-package com.social.controller;
+package com.social.request;
 
 public class LoginRequest {
 		

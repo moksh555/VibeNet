@@ -14,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import com.social.config.JwtProvider;
 import com.social.models.User;
 import com.social.repository.UserRepository;
+import com.social.request.LoginRequest;
 import com.social.response.AuthResponse;
 import com.social.service.CustomerUserDetailService;
 
