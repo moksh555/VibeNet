@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.social.config.JwtProvider;
+import com.social.exceptions.UserException;
 import com.social.models.User;
 import com.social.repository.UserRepository;
 
@@ -29,14 +30,14 @@ public class UserServiceImplementation implements UserService{
 	}
 
 	@Override
-	public User findUserById(Integer userId) throws Exception{
+	public User findUserById(Integer userId) throws UserException{
 		Optional<User> user = userRepository.findById(userId);
 		
 		if (user.isPresent()) {
 			return user.get();
 		}
 		
-		throw new Exception("user does not exixts " + userId);
+		throw new UserException("user does not exixts " + userId);
 	}
 
 	@Override
@@ -47,7 +48,7 @@ public class UserServiceImplementation implements UserService{
 	}
 
 	@Override
-	public User followUser(Integer reqUserId, Integer folUserId) throws Exception {
+	public User followUser(Integer reqUserId, Integer folUserId) throws UserException {
 		User reqUser = findUserById(reqUserId);
 		
 		User folUser = findUserById(folUserId);
@@ -61,11 +62,11 @@ public class UserServiceImplementation implements UserService{
 	}
 
 	@Override
-	public User updateUser(User user, Integer id) throws Exception{
+	public User updateUser(User user, Integer id) throws UserException{
 		Optional<User> userUpdate = userRepository.findById(id);
 		
 		if (userUpdate.isEmpty()){
-			throw new Exception("user does not exists with Id " + id);
+			throw new UserException("user does not exists with Id " + id);
 		} 
 		User existingUser = userUpdate.get();
 		if (user.getFirstName() != null) {
